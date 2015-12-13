@@ -11,6 +11,7 @@
 	var wordCounter = {
 		wordObj : new Object(),
 		sortedData : [],
+		total : 0,
 		countWords : function(text){
 			var myregex = new RegExp(/[^a-z]+/g);
 			var words = text.toLowerCase().split(myregex);
@@ -28,10 +29,12 @@
 		},
 		sort : function(){
 			for(word in this.wordObj){
+				this.total++;
 				if(this.sortedData[this.wordObj[word]] == undefined)
 					this.sortedData[this.wordObj[word]] = [];
 				this.sortedData[this.wordObj[word]].push(word);
 			}
+			logThis("<strong>" + this.total + " total words</strong>");
 		},
 		getWordCounts : function(){
 			for(var i=this.sortedData.length-1; i>0; i--){
