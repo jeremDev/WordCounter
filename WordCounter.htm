@@ -12,14 +12,18 @@
 		wordObj : new Object(),
 		sortedData : [],
 		total : 0,
+		timer : null,
 		countWords : function(text){
+			timer = new Date();
 			var myregex = new RegExp(/[^a-z]+/g);
 			var words = text.toLowerCase().split(myregex);
 			for(var i=0; i<words.length; i++){
 				this.addWord(words[i]);
 			}
 			this.sort();
+			logThis("<strong>Calculation time: " + (new Date() - timer) + " ms</strong>");
 			this.getWordCounts();
+			logThis("<strong>Total time: " + (new Date() - timer) + " ms</strong>");
 		},
 		addWord : function(word){
 			if(this.wordObj[word] == undefined)
@@ -37,10 +41,10 @@
 			logThis("<strong>" + this.total + " total words</strong>");
 		},
 		getWordCounts : function(){
-			for(var i=this.sortedData.length-1; i>0; i--){
-				if(this.sortedData[i] != undefined)
-					logThis(i + " : " + this.sortedData[i].join(", "));
-			}
+			var myKeys = Object.keys(this.sortedData);
+			var max = myKeys[myKeys.length-1];
+			for(var i = myKeys.length-1; i>-1; i--)
+				logThis(myKeys[i] + " : " + (((myKeys[i] / max) * 100)) + "% : " + this.sortedData[myKeys[i]].join(", "));
 		}
 	}
 	
