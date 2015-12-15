@@ -15,5 +15,5 @@ Sor far, I tested it with the main text on the Wikipedia article for "Philosopy"
 129 : that
 
 TO DO:
-Improve word matching, perhaps to consider "self-contained" as one word; as well as "contain" and "contained" as the same word.
-Add option to display comparisons in a chart
+* Improve word matching, perhaps to consider "self-contained" as one word; as well as "contain" and "contained" as the same word.
+* Add option to display comparisons in a chart
